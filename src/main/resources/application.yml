@@ -1,0 +1,39 @@
+amazon:
+  associatedId: dale0713
+
+spring:
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
+
+logging:
+  file: logs/service.log
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: DEBUG
+    jdbc: WARN
+    jdbc.sqltiming: INFO
+    jdbc.resultsettable: INFO
+
+---
+spring:
+  profiles: development
+
+logging:
+  level:
+    root: DEBUG
+
+---
+
+spring:
+  profiles: production
+
+logging:
+  level:
+    root: WARN
+    org:
+      springframework: INFO

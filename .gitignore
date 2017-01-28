@@ -1,5 +1,7 @@
 *.iml
 
+logs/*
+
 # Created by https://www.gitignore.io/api/gradle
 
 ### Gradle ###
