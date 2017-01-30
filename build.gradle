@@ -34,4 +34,5 @@ dependencies {
 	compile('org.lazyluke:log4jdbc-remix:0.2.7')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.security:spring-security-test')
 }
