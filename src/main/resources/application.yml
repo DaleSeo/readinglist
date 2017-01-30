@@ -31,7 +31,6 @@ logging:
     root: DEBUG
 
 ---
-
 spring:
   profiles: production
 
