@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import static org.hibernate.criterion.Restrictions.and;
+
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -20,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/").access("hasRole('READER')")
+                .antMatchers("/mgmt/**").access("hasRole('ADMIN')")
                 .antMatchers("/**").permitAll()
             .and()
             .formLogin()
@@ -29,7 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService());
+        auth.userDetailsService(userDetailsService())
+        .and()
+        .inMemoryAuthentication()
+            .withUser("admin")
+            .password("s3cr3t")
+            .roles("ADMIN", "READER");
     }
 
     @Bean

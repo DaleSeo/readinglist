@@ -19,6 +19,9 @@ logging:
     jdbc.sqltiming: INFO
     jdbc.resultsettable: INFO
 
+management:
+  context-path: /mgmt
+
 ---
 spring:
   profiles: development
